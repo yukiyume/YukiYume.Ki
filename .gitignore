@@ -1,0 +1,16 @@
+
+_ReSharper.YukiYume.Ki/
+YukiYume.Ki.5.0.resharper.user
+/YukiYume.Ki.suo
+/YukiYume.Ki/bin/
+/YukiYume.Ki/obj/
+/YukiYume.Ki/YukiYume.Ki.csproj.user
+/YukiYume.Ki.Tests/bin/
+/YukiYume.Ki.Tests/obj/
+/YukiYume.Ki.Tests/YukiYume.Ki.Tests.csproj.user
+/YukiYume.Ki.Model/bin/
+/YukiYume.Ki.Model/obj/
+/YukiYume.Ki.Model/YukiYume.Ki.Model.csproj.user
+/Lib/*.xml
+/Lib/*.pdb
+/Lib/*.XML
