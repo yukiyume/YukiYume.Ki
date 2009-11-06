@@ -1,4 +1,7 @@
-﻿#region MIT License
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+#region MIT License
 
 /*
  * Copyright (c) 2009 Kristopher Baker (ao@yukiyume.net)
@@ -30,19 +33,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using FluentNHibernate.Mapping;
 
 #endregion
 
 namespace YukiYume.Ki.Model
 {
-    public class Author
+    public class User
     {
-        public virtual string Id { get; set; }
+        public virtual Guid UserId { get; set; }
 
-        public User User { get; set; }
+        public virtual Guid ApplicationId { get; set; }
 
-        public virtual string FirstName { get; set; }
+        public virtual string UserName { get; set; }
 
-        public virtual string LastName { get; set; }
+        public virtual string LoweredUserName { get; set; }
+
+        public virtual string MobileAlias { get; set; }
+
+        public virtual bool IsAnonymous { get; set; }
+
+        public virtual DateTime LastActivityDate { get; set; }
+
+        public virtual IList<Author> Authors { get; set; }
     }
 }

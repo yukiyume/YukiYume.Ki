@@ -30,19 +30,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using FluentNHibernate.Mapping;
 
 #endregion
 
-namespace YukiYume.Ki.Model
+namespace YukiYume.Ki.Model.Mapping
 {
-    public class Author
+    public class UserMap : ClassMap<User>
     {
-        public virtual string Id { get; set; }
-
-        public User User { get; set; }
-
-        public virtual string FirstName { get; set; }
-
-        public virtual string LastName { get; set; }
+        public UserMap()
+        {
+            Table("aspnet_Users");
+            Id(user => user.UserId);
+            Map(user => user.ApplicationId);
+            Map(user => user.UserName);
+            Map(user => user.LoweredUserName);
+            Map(user => user.MobileAlias);
+            Map(user => user.IsAnonymous);
+            Map(user => user.LastActivityDate);
+            HasMany(user => user.Authors)
+                .Inverse()
+                .Cascade.All();
+        }
     }
 }

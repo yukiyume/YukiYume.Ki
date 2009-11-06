@@ -30,19 +30,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using FluentNHibernate.Mapping;
 
 #endregion
 
-namespace YukiYume.Ki.Model
+namespace YukiYume.Ki.Model.Mapping
 {
-    public class Author
+    public class PostMap : ClassMap<Post>
     {
-        public virtual string Id { get; set; }
-
-        public User User { get; set; }
-
-        public virtual string FirstName { get; set; }
-
-        public virtual string LastName { get; set; }
+        public PostMap()
+        {
+            Id(post => post.Id);
+            Map(post => post.Title)
+                .Length(64).Not.Nullable();
+            Map(post => post.IsPublished);
+            Map(post => post.PublishedAt);
+            Map(post => post.ExpiresAt);
+            Map(post => post.Content);
+            Map(post => post.IsCommentsEnabled);
+            References(post => post.PublishedBy);
+        }
     }
 }

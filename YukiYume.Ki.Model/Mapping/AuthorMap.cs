@@ -30,19 +30,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using FluentNHibernate.Mapping;
 
 #endregion
 
-namespace YukiYume.Ki.Model
+namespace YukiYume.Ki.Model.Mapping
 {
-    public class Author
+    public class AuthorMap : ClassMap<Author>
     {
-        public virtual string Id { get; set; }
-
-        public User User { get; set; }
-
-        public virtual string FirstName { get; set; }
-
-        public virtual string LastName { get; set; }
+        public AuthorMap()
+        {
+            Id(author => author.Id);
+            Map(author => author.FirstName)
+                .Length(64);
+            Map(author => author.LastName)
+                .Length(64);
+            References(author => author.User);
+        }
     }
 }
